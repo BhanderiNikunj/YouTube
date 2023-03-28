@@ -25,8 +25,4 @@ class VideoProvider extends ChangeNotifier {
   Future<void> stopVideo() async {
     await videoPlayerController!.pause();
   }
-
-  List videoPath = [
-   "Assets/Video/v1.mp4",
-  ];
 }

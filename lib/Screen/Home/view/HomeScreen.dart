@@ -105,21 +105,16 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 10,
             ),
             Expanded(
-              child: Container(
-                height: 300,
-                child: ListView.builder(
-                  itemBuilder: (context, index) => InkWell(
-                    onTap: () {
-                      Provider.of<VideoProvider>(context, listen: false)
-                          .initVideo(videoprovider!.videoPath[index]);
-                      Navigator.pushNamed(context, 'video', arguments: index);
-                    },
-                    child: customVideoBox(index),
-                  ),
-                  itemCount: homeProviderfalse!.videoImgList.length,
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
+              child: ListView.builder(
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    Provider.of<VideoProvider>(context, listen: false)
+                        .initVideo(homeProviderfalse!.VideoList[index]);
+                    Navigator.pushNamed(context, 'video', arguments: index);
+                  },
+                  child: videoBox(index),
                 ),
+                itemCount: homeProviderfalse!.VideoList.length,
               ),
             ),
           ],
@@ -183,14 +178,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget customVideoBox(int index) {
+  Widget videoBox(int index) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           height: 200,
-          width: double.infinity,
-          child: Image.asset("${homeProviderfalse!.videoImgList[index]}"),
+          width: 350,
+          child: Image.asset(
+            "${homeProviderfalse!.videoImgList[index]}",
+            fit: BoxFit.cover,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -199,8 +197,9 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               CircleAvatar(
                 radius: 22,
-                backgroundImage:
-                    AssetImage("${homeProviderfalse!.channelLogoList[index]}"),
+                backgroundImage: AssetImage(
+                  "${homeProviderfalse!.channelLogoList[index]}",
+                ),
               ),
               SizedBox(
                 width: 10,
@@ -208,18 +207,29 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("${homeProviderfalse!.videoNameList1[index]}",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w500)),
-                  Text("${homeProviderfalse!.videoNameList2[index]}",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w500)),
+                  Text(
+                    "${homeProviderfalse!.videoNameList1[index]}",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    "${homeProviderfalse!.videoNameList2[index]}",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                   SizedBox(
                     height: 2,
                   ),
                   Text(
                     "${homeProviderfalse!.channelNameList[index]} . ${homeProviderfalse!.videoViewList[index]} . ${homeProviderfalse!.videoTimingList[index]}",
-                    style: TextStyle(color: Colors.black38, fontSize: 11),
+                    style: TextStyle(
+                      color: Colors.black38,
+                      fontSize: 11,
+                    ),
                   ),
                 ],
               ),

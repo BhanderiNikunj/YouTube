@@ -12,9 +12,12 @@ class FpleshScreen extends StatefulWidget {
 class _FpleshScreenState extends State<FpleshScreen> {
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, 'home');
-    });
+    Timer(
+      Duration(seconds: 3),
+      () {
+        Navigator.pushReplacementNamed(context, 'home');
+      },
+    );
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,

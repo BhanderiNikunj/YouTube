@@ -10,15 +10,19 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => HomeProvider(),),
-        ChangeNotifierProvider(create: (context) => VideoProvider(),),
+        ChangeNotifierProvider(
+          create: (context) => HomeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => VideoProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          '/':(context) => FpleshScreen(),
-          'home':(context) => HomeScreen(),
-          'video':(context) => VideoScreen(),
+          '/': (context) => FpleshScreen(),
+          'home': (context) => HomeScreen(),
+          'video': (context) => VideoScreen(),
         },
       ),
     ),
